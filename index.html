@@ -2,6 +2,12 @@
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CivilVerify</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0C0B0A">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Space+Mono:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&family=Noto+Sans+Kannada:wght@400;700&family=Noto+Sans+Telugu:wght@400;700&family=Noto+Sans+Tamil:wght@400;700&display=swap">
 <style>
 :root{--bg:#f5f1de;--s:#fff3b8;--s2:#fffdf3;--t:#151515;--m:#6f6a55;--l:#ddd5ac;--a:#ff5a1f;--dot:#d6cd9f;--nav:#151515;--nt:#f5f1de;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -366,4 +372,5 @@ document.addEventListener('pointerdown',e=>{if(e.target.id==='m3'){VIEW.drag={x:
 document.addEventListener('pointermove',e=>{if(VIEW.drag){VIEW.yaw=VIEW.drag.y+(e.clientX-VIEW.drag.x)*.6;draw3d()}});
 document.addEventListener('pointerup',()=>{VIEW.drag=null});
 render();
+try{if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}catch(e){}
 </script></body></html>
