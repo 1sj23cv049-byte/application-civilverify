@@ -1,0 +1,33 @@
+{
+  "model": "MobileNetV3Small transfer learning",
+  "created": "2026-10-28",
+  "classes": [
+    "good",
+    "honeycomb"
+  ],
+  "honeycomb_index": 1,
+  "threshold": 0.86,
+  "input": {
+    "shape": [
+      1,
+      224,
+      224,
+      3
+    ],
+    "dtype": "float32",
+    "range": "0-255 raw pixels, RGB, NHWC"
+  },
+  "output": "softmax probabilities in class order",
+  "dataset": {
+    "good": 20,
+    "honeycomb": 20
+  },
+  "independent_groups": 38,
+  "cross_validation": {
+    "folds": 5,
+    "auc": 0.9825,
+    "honeycomb_caught": "18/20",
+    "good_wrongly_flagged": "0/20"
+  },
+  "notes": "Trained on a small, partly stock-photo dataset. Not validated on photos from a real site. Screening aid only; an engineer decides."
+}
