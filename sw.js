@@ -1,5 +1,5 @@
 /* CivilVerify service worker: offline start for the app shell, cached CDN libraries and fonts. */
-const VER = 'cv-v1';
+const VER = 'cv-v3';
 const SHELL = ['./', 'index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png'];
 const CDN = [
   'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
