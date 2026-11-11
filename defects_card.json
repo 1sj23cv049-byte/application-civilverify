@@ -1,0 +1,77 @@
+{
+  "model": "MobileNetV3Small transfer learning, fully convolutional head",
+  "created": "2026-11-11",
+  "classes": [
+    "cold_joint",
+    "crack",
+    "good",
+    "honeycomb"
+  ],
+  "thresholds": {
+    "cold_joint": 0.22,
+    "crack": 0.95,
+    "honeycomb": 0.59
+  },
+  "input": {
+    "shape": [
+      1,
+      256,
+      256,
+      3
+    ],
+    "dtype": "float32",
+    "range": "0-255 raw pixels, RGB, NHWC"
+  },
+  "outputs": "class probabilities [1,classes] and per-cell class scores [1,8,8,classes] (raw logits)",
+  "dataset": {
+    "cold_joint": 58,
+    "crack": 50,
+    "good": 20,
+    "honeycomb": 64
+  },
+  "independent_groups": 171,
+  "cross_validation": {
+    "folds": 5,
+    "top_class_correct_percent": 84.9,
+    "auc": {
+      "cold_joint": 0.936,
+      "crack": 0.999,
+      "good": 0.945,
+      "honeycomb": 0.976
+    },
+    "per_defect": {
+      "cold_joint": "caught 50/58; good photos flagged 6; other-defect photos also flagged 15",
+      "crack": "caught 44/50; good photos flagged 0; other-defect photos also flagged 1",
+      "honeycomb": "caught 55/64; good photos flagged 0; other-defect photos also flagged 6"
+    },
+    "good_flagged_with_any_defect": "6/20",
+    "confusion_matrix": [
+      [
+        44,
+        2,
+        4,
+        8
+      ],
+      [
+        2,
+        48,
+        0,
+        0
+      ],
+      [
+        5,
+        0,
+        14,
+        1
+      ],
+      [
+        6,
+        0,
+        1,
+        57
+      ]
+    ]
+  },
+  "localisation": "Circles come from a class activation map learned from whole-photo labels only. They have not been measured against hand-drawn boxes.",
+  "notes": "Small, partly stock-photo dataset. Not validated on photos from a real site. Screening aid only; an engineer decides."
+}
